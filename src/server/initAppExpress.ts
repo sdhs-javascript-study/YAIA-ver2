@@ -26,10 +26,10 @@ export const initAppExpress = (app: Express): void => {
         const userController = new UserController();
         const userRouter = new UserRouter(userController);
 
-
+        
         app.use(express.json());
         app.use(express.urlencoded({ extended: true }));
-        // app.use("/user", userRouter);
+        app.use("/user", userRouter.router);
         // app.use('/socket.io', express.static(path.join(__dirname, '../node_modules/socket.io/client-dist')));
     } catch (error) {
         throw new Error(`error at initAppExpress.ts: ${error}`);
