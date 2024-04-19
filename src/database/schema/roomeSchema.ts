@@ -9,6 +9,7 @@ const roomSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    
     parcitipants:[mongoose.Schema.Types.ObjectId],
 
 
