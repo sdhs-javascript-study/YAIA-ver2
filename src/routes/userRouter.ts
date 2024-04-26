@@ -9,10 +9,15 @@ export class UserRouter {
         this.userController = userController; 
         
         this.userCreateRoute();
+        this.joinRoute();
     }
 
-    userCreateRoute() {
+    public userCreateRoute() {
         this.router.route("/").get(this.userController.sendUser);
         this.router.route("/createUser").post(this.userController.createUser);
+    }
+    
+   public joinRoute(){
+        this.router.route("/joinRoom").post(this.userController.addRoom);
     }
 }
