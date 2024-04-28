@@ -42,4 +42,17 @@ export class QnaService {
 
         return Rooms;
     }
+
+    getAllUsers = async(roomId:string): Promise<string[]> =>{
+        const Rooms = await Room.find({});
+        let userNames = [];
+        const UserIds = Rooms.map((el)=>el.parcitipants);
+
+        UserIds.forEach(async(el)=>{
+            let user = await User.findById({el});
+            userNames.push(user?.userName);
+        })
+        
+        return userNames;
+    }
 }

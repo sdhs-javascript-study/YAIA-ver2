@@ -15,16 +15,18 @@ export const initChat = (io:Server) =>{
 
         socket.on('message',(msg:string)=>{
             console.log(msg);
-            const user = userService.getUser(socket.id);
-            if(user){
-                const message = messageService.addMessage(Date.now().toString(),user.username,msg);
-                io.emit('message',msg);
-            }
+            
+            // const user = userService.getUser(socket.id);
+
+            // if(user){
+            //     const message = messageService.addMessage(Date.now().toString(),user.username,msg);
+            //     io.emit('message',msg);
+            // }
         })
 
         socket.on('login',(username:string)=>{
-            userService.addUser(username);
-            io.emit('userList',userService.getUser(username));
+            userService.sendUser(username);
+            // io.emit('userList',userService.getUser(username));
         })
     })
 }
