@@ -34,4 +34,15 @@ export class qnaController{
             res.status(500).json({ "error": "Internal server error" });
         }
     }
+
+    getAllUsers = async(req:Request,res:Response): Promise<void>=>{
+        try{
+            const roomId = req.body.roomId
+            const getUsers = await this.qnaService.getAllUsers(roomId);
+            res.status(200).json({"users":getUsers});
+        }catch(error){
+            console.error("Error creating room:", error);
+            res.status(500).json({ "error": "Internal server error" });
+        }
+    }
 }

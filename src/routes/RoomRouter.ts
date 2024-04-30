@@ -10,6 +10,7 @@ export class roomRouter{
 
         this.roomCreateRoute();
         this.findRoomRoute();
+        this.RoomusersRoute();
     }
 
     public  roomCreateRoute(){
@@ -20,5 +21,9 @@ export class roomRouter{
         this.router.route("/").get(this.qnaController.getAllRooms);
     }
     
+    public RoomusersRoute(){
+        this.router.route("/getUsers").get(this.qnaController.getAllUsers);
+    }
+
 
 }

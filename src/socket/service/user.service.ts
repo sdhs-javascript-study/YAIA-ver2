@@ -1,9 +1,8 @@
-import { userService } from "../../user/user.service";
+import { QnaService } from "../../qna/qna.service";
 import { User } from "../module/user.module";
 
-export class UserService extends userService  {
+export class UserService extends QnaService   {
     private userMsgs:[{}] = [{}];
-    
     // addUser(username:string):User{
     //     const user:User = {username};
     //     this.users.push(user);
@@ -17,7 +16,7 @@ export class UserService extends userService  {
         if(!userName) return false;
 
         if(!message) return false;
-
+    
         this.userMsgs.push({"userName":userName,"message":message});
         return "success";
     }

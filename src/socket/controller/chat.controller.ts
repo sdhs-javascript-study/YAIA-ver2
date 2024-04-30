@@ -5,7 +5,7 @@ import { MessageService } from "../service/message.service";
 export const initChat = (io:Server) =>{
     const userService = new UserService();
     const messageService = new MessageService();
-
+    
     io.on('connection',(socket:Socket)=>{
         console.log('a User connected');
 
@@ -24,9 +24,11 @@ export const initChat = (io:Server) =>{
             // }
         })
 
-        socket.on('login',(username:string)=>{
-            userService.sendUser(username);
-            // io.emit('userList',userService.getUser(username));
+        socket.on('login',async(data)=>{
+            console.log(data);
+                                   
+            await userService.addUser(data.keycode,data.username);
+            console.log("user Loged in");
         })
     })
 }
