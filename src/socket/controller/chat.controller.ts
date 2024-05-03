@@ -14,20 +14,17 @@ export const initChat = (io:Server) =>{
         });
 
         socket.on('message',(msg:string)=>{
-            console.log(msg);
-            
-            // const user = userService.getUser(socket.id);
-
+            console.log(msg);            
             // if(user){
             //     const message = messageService.addMessage(Date.now().toString(),user.username,msg);
-            //     io.emit('message',msg);
+                io.emit('message',msg);
             // }
         })
-
+        
         socket.on('login',async(data)=>{
-            console.log(data);
-                                   
-            await userService.addUser(data.keycode,data.username);
+            userService.setUser(data.keycode);
+
+            await userService.addUser(data.keycode,data.username); 
             console.log("user Loged in");
         })
     })

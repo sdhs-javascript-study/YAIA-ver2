@@ -23,10 +23,9 @@ export class QnaService {
             data == userId
         });
 
-        console.log(userExists);
 
         if(!userExists){
-            return {msg:""};
+            return {msg:"user alredy Exist"};
         }
 
         const user = await User.findById(userId);
@@ -64,12 +63,12 @@ export class QnaService {
     }
 
     getAllUserId = async(roomId:string): Promise<string[]> =>{
-        const rooms = await Room.find({});
+        const rooms = await Room.find({keycode:roomId});
         const userIds = rooms.flatMap(el=>el?.parcitipants);
 
         const userPromises = userIds.map(async (userId) => {
             const user = await User.findById(userId);
-            return user?._id;
+            return user?._id.toString();
         });
 
         const userId = Promise.all(userPromises);

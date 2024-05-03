@@ -3,15 +3,19 @@ import { User } from "../module/user.module";
 
 export class UserService extends QnaService   {
     private userMsgs:[{}] = [{}];
-    // addUser(username:string):User{
-    //     const user:User = {username};
-    //     this.users.push(user);
-    //     return user;
-    // }
+    public LogedInUsers: string[] = [];
+
+    
+    setUser = async(roomId:string):Promise<boolean> =>{
+        const ids = await this.getAllUserId(roomId);
+        this.LogedInUsers = ids;
+        return true;
+    }   
 
 
 
-    getMessege(message:string,userName:string):string|boolean{
+
+    getMessege = (message:string,userName:string):string|boolean=>{
         let returnValue:boolean|null = null;
         if(!userName) return false;
 
