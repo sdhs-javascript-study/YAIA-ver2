@@ -5,4 +5,4 @@ export interface SessionData {
     userName: string,
     isRoomEnterd: boolean,
     userRoom: string | null 
-};
+};                                                                                
