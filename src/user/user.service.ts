@@ -26,7 +26,7 @@ export class userService {
             const newUser = await User.findOneAndUpdate(
                 { userName: name },
                 { $push: { roomsEnterd: room?._id } }
-            )
+            );
             
             await room?.updateOne(
                 { $push: { parcitipants: newUser?._id } }
