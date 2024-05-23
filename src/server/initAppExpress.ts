@@ -21,7 +21,7 @@ export const initAppExpress = (app: Express): void => {
             throw new Error("DB_URL is not defined in the environment variables.");
         }
 
-        const db = new DB(dbURL);
+        const    db = new DB(dbURL);
         db.connect();
 
         const server = http.createServer(app);
