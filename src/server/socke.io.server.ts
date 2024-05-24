@@ -5,7 +5,7 @@ import { Server } from "socket.io";
 export const OpenSocketServer = (server:HttpServer): void =>{
     server.listen(3002,()=>{
         console.log('Socket IO server listening on port',3001);
-    });
+    })
 
     const io = new Server(server,{
         cors:{
@@ -13,5 +13,5 @@ export const OpenSocketServer = (server:HttpServer): void =>{
         }
     });
 
-    initChat(io);
+    initChat(io)
 }
